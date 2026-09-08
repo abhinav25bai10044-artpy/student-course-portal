@@ -6,7 +6,7 @@ A lightweight, terminal-based java application for managing student registration
 
 ## Features
 
-- **Student Management:** Register students and query profile records.
+- **Student Management:** Register and drop students and query profile records.
 - **Course Management:** View available course offerings, capacity limits, and course credit details.
 - **Enrollment Operations:** Interactive course enrollment and dropping functionality.
 - **Data Persistence:** Automatic local storage file persistence (`portal_data.txt`) between runs.
