@@ -29,9 +29,7 @@ public class Main {
                 case "3" -> enrollInCourse();
                 case "4" -> dropCourse();
                 case "5" -> viewStudentProfile();
-                case "6" -> removeStudent();
-                case "7" -> addNewCourse();
-                case "8" -> {
+                case "6" -> {
                     saveData();
                     System.out.println("\nData saved successfully. Exiting portal. Goodbye!");
                     running = false;
@@ -49,10 +47,8 @@ public class Main {
         System.out.println("3. Enroll Student in Course");
         System.out.println("4. Drop Course for Student");
         System.out.println("5. View Student Profile & Enrolled Courses");
-        System.out.println("6. Delete Student data");
-        System.out.println("7. Add New Course (Admin)");
-        System.out.println("8. Save & Exit");
-        System.out.print("Enter choice (1-8): ");
+        System.out.println("6. Save & Exit");
+        System.out.print("Enter choice (1-6): ");
     }
 
     private static void registerStudent() {
@@ -79,7 +75,7 @@ public class Main {
         }
 
         students.put(id, new Student(id, name));
-        System.out.println("Student " + name + "registered successfully");
+        System.out.println("Student " + name + " registered successfully");
     }
 
     private static void listCourses() {
@@ -161,54 +157,7 @@ public class Main {
         }
         System.out.println("=========================================");
     }
-
-    private static void removeStudent() {
-        System.out.print("\nEnter Student ID to be removed: ");
-        String id = scanner.nextLine().trim();
-
-        Student removedStudent = students.remove(id);
-
-        if (removedStudent != null) {
-            System.out.println("Student " + removedStudent.getName() + " removed.");
-        }
-        else {
-            System.out.println("Student ID not found.");
-        }
-    }
-
-    private static void addNewCourse() {
-        System.out.print("\nEnter Course Code (e.g., CSE1001): ");
-        String code = scanner.nextLine().trim().toUpperCase();
-        if (courses.containsKey(code)) {
-            System.out.println("Course code already exists.");
-            return;
-        }
-
-        System.out.print("Enter Course Name: ");
-        String name = scanner.nextLine().trim();
-
-        System.out.print("Enter Course Credits: ");
-        int credits;
-        try {
-            credits = Integer.parseInt(scanner.nextLine().trim());
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid credits input.");
-            return;
-        }
-
-        System.out.print("Enter Max Capacity: ");
-        int capacity;
-        try {
-            capacity = Integer.parseInt(scanner.nextLine().trim());
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid capacity input.");
-            return;
-        }
-
-        courses.put(code, new Course(code, name, credits, capacity));
-        System.out.println("Added course: " + code + " - " + name);
-    }
-
+    
     private static void seedInitialCoursesIfEmpty() {
         if (courses.isEmpty()) {
             courses.put("CSE3003", new Course("CSE3003", "Operating System", 4, 120));
